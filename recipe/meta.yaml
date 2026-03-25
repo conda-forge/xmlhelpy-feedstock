@@ -1,5 +1,5 @@
 {% set name = "xmlhelpy" %}
-{% set version = "0.14.0" %}
+{% set version = "0.15.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://gitlab.com/iam-cms/workflows/xmlhelpy/-/archive/v{{ version }}/xmlhelpy-v{{ version }}.tar.gz
-  sha256: 3b46f9f08c029eb2e516e837a60179f112508a0cb72f5b64d63de217acf32fa3
+  sha256: 9c1397f3bb3d6a79f17d8682bcd86dea7a943468ed69b0d218b85be471c32765
 
 build:
   noarch: python
