@@ -15,7 +15,6 @@ obtain a machine readable XML representation of tools and their parameters. The
 XML representation can be used, for example, to generate GUIs on top of any
 tool that provides it.
 
-
 Current build status
 ====================
 
