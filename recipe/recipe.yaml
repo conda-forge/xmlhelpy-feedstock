@@ -1,41 +1,41 @@
-{% set name = "xmlhelpy" %}
-{% set version = "0.15.0" %}
+schema_version: 1
+
+context:
+  name: xmlhelpy
+  version: "0.15.0"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://gitlab.com/iam-cms/workflows/xmlhelpy/-/archive/v{{ version }}/xmlhelpy-v{{ version }}.tar.gz
+  url: https://gitlab.com/iam-cms/workflows/xmlhelpy/-/archive/v${{ version }}/xmlhelpy-v${{ version }}.tar.gz
   sha256: 9c1397f3bb3d6a79f17d8682bcd86dea7a943468ed69b0d218b85be471c32765
 
 build:
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python ${{ python_min }}.*
     - pip
     - setuptools
   run:
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - click >=8.0.0,<9.0.0
     - lxml >=5.0.0,<6.0.0
 
-test:
-  imports:
-    - xmlhelpy
-  requires:
-    - pip
-    - python {{ python_min }}
-  commands:
-    - pip check
+tests:
+  - python:
+      imports:
+        - xmlhelpy
+      pip_check: true
+      python_version: ${{ python_min }}
 
 about:
-  home: https://gitlab.com/iam-cms/workflows/xmlhelpy
-  summary: 'CLI wrapper supporting the xmlhelp interface.'
+  summary: CLI wrapper supporting the xmlhelp interface.
   description: |
     xmlhelpy is a wrapper library based on Click. Its main goal is to easily provide
     the xmlhelp interface to any Python CLI tool. This interface can be used to
@@ -44,6 +44,7 @@ about:
     tool that provides it.
   license: Apache-2.0
   license_file: LICENSE
+  homepage: https://gitlab.com/iam-cms/workflows/xmlhelpy
 
 extra:
   recipe-maintainers:
